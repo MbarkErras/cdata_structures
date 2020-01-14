@@ -14,7 +14,8 @@ t_dstruct_node  *t_dstruct_create_node(void *content, size_t content_size)
 {
     t_dstruct_node *node;
 
-    node = malloc(sizeof(t_dstruct_node));
+    if (!(node = malloc(sizeof(t_dstruct_node))))
+        return (NULL);
     node->content = content;
     node->content_size = content_size;
     node->next = NULL;
