@@ -1,7 +1,8 @@
 NAME = cdstruct.a
 
-SRCS =	queue.c \
-		stack.c
+SRCS =	t_dstruct_list.c \
+		stack.c \
+		queue.c
 
 OBJS = $(SRCS:.c=.o)
 

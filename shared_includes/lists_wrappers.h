@@ -18,4 +18,6 @@ typedef struct  s_dstruct_list
 
 }               t_dstruct_list;
 
+t_dstruct_list  t_dstruct_list_init(void);
+
 #endif
