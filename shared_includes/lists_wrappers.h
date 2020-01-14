@@ -6,6 +6,7 @@
 typedef struct  s_dstruct_node
 {
     void                    *content;
+    size_t                  content_size;
     struct s_dstruct_node   *next;
     struct s_dstruct_node   *prev;
 }               t_dstruct_node;
@@ -19,5 +20,6 @@ typedef struct  s_dstruct_list
 }               t_dstruct_list;
 
 t_dstruct_list  t_dstruct_list_init(void);
+t_dstruct_node  *t_dstruct_create_node(void *content, size_t content_size);
 
 #endif

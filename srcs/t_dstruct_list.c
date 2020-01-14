@@ -9,3 +9,15 @@ t_dstruct_list  t_dstruct_list_init(void)
     list.size = 0;
     return (list);
 }
+
+t_dstruct_node  *t_dstruct_create_node(void *content, size_t content_size)
+{
+    t_dstruct_node *node;
+
+    node = malloc(sizeof(t_dstruct_node));
+    node->content = content;
+    node->content_size = content_size;
+    node->next = NULL;
+    node->prev = NULL;
+    return (node);
+}
