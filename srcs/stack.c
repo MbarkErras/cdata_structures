@@ -7,11 +7,16 @@ void    stack_push(t_dstruct_list *stack, t_dstruct_node *node)
         return ;
 #endif
     if (!stack->head)
+    {
+        node->next = NULL;
+        node->prev = NULL;
         stack->head = node;
+        stack->tail = node;
+    }
     else
     {
         node->next = NULL;
-        node->next->prev = stack->tail;
+        node->prev = stack->tail;
         stack->tail->next = node;
         stack->tail = node;
     }
@@ -23,7 +28,7 @@ void    stack_pop(t_dstruct_list *stack, void (* node_deconstructor)(void *))
     t_dstruct_node *popped;
 
 #ifndef DSTRUCT_PROTECT
-    if (!stack || !stack->tail)
+    if (!stack || !stack->tail || !node_deconstructor)
         return ;
 #endif
     popped = stack->tail;
@@ -32,6 +37,7 @@ void    stack_pop(t_dstruct_list *stack, void (* node_deconstructor)(void *))
         stack->tail->next = NULL;
     else
         stack->head = NULL;
-    node_deconstructor(popped);
+    node_deconstructor(popped->content);
+    free(popped);
     stack->size--;
 }

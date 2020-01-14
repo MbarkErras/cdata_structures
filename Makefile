@@ -1,28 +1,30 @@
 NAME = cdstruct.a
 
-SRCS = stack/stack.c
+SRCS =	queue.c \
+		stack.c
 
-SRCS_DIRS = stack
+OBJS = $(SRCS:.c=.o)
 
+SRCS_DIR = srcs
 OBJS_DIR = build
-OBJS_DIRS = $(addprefix $(OBJS_DIR)/, $(SRCS_DIRS))
-OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
+INCLUDES = shared_includes
 
-SHARED_INCLUDES = shared_includes
+SRCS_PATH = $(addprefix $(SRCS_DIR)/, $(SRCS))
+OBJS_PATH = $(addprefix $(OBJS_DIR)/, $(OBJS))
 
 FLAGS = #-Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+$(NAME): $(OBJS_PATH)
+	ar rc $(NAME) $(OBJS_PATH)
 	ranlib $(NAME)
 
-$(OBJS): $(OBJS_DIRS)/%.o : $(SRCS_DIRS)/%.c | $(OBJS_DIRS)
-	gcc $(FLAGS) -I$(SHARED_INCLUDES) -c $< -o $@
+$(OBJS_PATH): $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c | $(OBJS_DIR)
+	gcc $(FLAGS) -I$(INCLUDES) -c $< -o $@
 
-$(OBJS_DIRS):
-	mkdir build $(OBJS_DIRS)
+$(OBJS_DIR):
+	mkdir $(OBJS_DIR)
 
 clean:
 	rm -rf $(OBJS_DIR)
@@ -30,4 +32,4 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean | all
