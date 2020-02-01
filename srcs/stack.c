@@ -27,17 +27,16 @@ void    stack_pop(t_dstruct_list *stack, void (* node_deconstructor)(void *))
 {
     t_dstruct_node *popped;
 
-#ifndef DSTRUCT_PROTECT
-    if (!stack || !stack->tail || !node_deconstructor)
+    if (!stack || !stack->tail)
         return ;
-#endif
     popped = stack->tail;
     stack->tail = stack->tail->prev;
     if (stack->tail)
         stack->tail->next = NULL;
     else
         stack->head = NULL;
-    node_deconstructor(popped->content);
+    if (node_deconstructor)
+        node_deconstructor(popped->content);
     free(popped);
     stack->size--;
 }
