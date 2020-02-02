@@ -1,6 +1,7 @@
 NAME = cdstruct.a
 
 SRCS =	t_dstruct_list.c \
+		utilities.c \
 		stack.c \
 		queue.c
 

@@ -23,4 +23,10 @@ typedef struct  s_dstruct_list
 t_dstruct_list  t_dstruct_list_init(void);
 t_dstruct_node  *t_dstruct_create_node(void *content, size_t content_size);
 
+/*
+** UTILITIES
+*/
+
+size_t          list_counter(t_dstruct_list list, int (*filter)(void *));
+
 #endif
