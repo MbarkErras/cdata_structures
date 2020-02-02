@@ -28,5 +28,6 @@ t_dstruct_node  *t_dstruct_create_node(void *content, size_t content_size);
 */
 
 size_t          list_counter(t_dstruct_list list, int (*filter)(void *));
+t_dstruct_node *list_find_node(t_dstruct_list list, int (*filter)(void *, void *), void *argument);
 
 #endif

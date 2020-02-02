@@ -12,3 +12,14 @@ size_t	list_counter(t_dstruct_list list, int (*filter)(void *))
 	}
 	return (count);
 }
+
+t_dstruct_node *list_find_node(t_dstruct_list list, int (*filter)(void *, void *), void *argument)
+{
+	while (list.head)
+	{
+		if (filter(list.head->content, argument))
+			return (list.head);
+		list.head = list.head->next;
+	}
+	return (NULL);
+}
