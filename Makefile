@@ -2,6 +2,7 @@ NAME = cdstruct.a
 
 SRCS =	t_dstruct_list.c \
 		utilities.c \
+		list_delete.c \
 		stack.c \
 		queue.c
 
