@@ -34,4 +34,7 @@ t_dstruct_node *list_find_node(t_dstruct_list list, int (*filter)(void *, void *
 ** LIST_DELETE
 */
 
+void    list_delete_node(t_dstruct_list *list, t_dstruct_node *node,
+		void (*node_deconstructor)(void *));
+
 #endif
