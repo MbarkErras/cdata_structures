@@ -35,6 +35,7 @@ t_dstruct_list	list_copy(t_dstruct_list list, int (*filter)(void *));
 ** LIST_DELETE
 */
 
+void    list_delete(t_dstruct_list *list, void (*deconstructor)(void *));
 void    list_delete_node(t_dstruct_list *list, t_dstruct_node *node,
 		void (*node_deconstructor)(void *));
 

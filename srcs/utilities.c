@@ -44,3 +44,9 @@ t_dstruct_list	list_copy(t_dstruct_list list, int (*filter)(void *))
 	}
 	return (copy);
 }
+
+void	list_delete(t_dstruct_list *list, void (*deconstructor)(void *))
+{
+	while (list->size)
+		list_delete_node(list, list->tail, deconstructor);
+}
