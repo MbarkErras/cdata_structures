@@ -3,5 +3,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "centropy.h"
 
 #endif
