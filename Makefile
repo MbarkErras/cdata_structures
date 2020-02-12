@@ -15,7 +15,7 @@ INCLUDES = shared_includes
 SRCS_PATH = $(addprefix $(SRCS_DIR)/, $(SRCS))
 OBJS_PATH = $(addprefix $(OBJS_DIR)/, $(OBJS))
 
-FLAGS = #-Wall -Wextra -Werror
+FLAGS = -g #-Wall -Wextra -Werror
 
 all: $(NAME)
 

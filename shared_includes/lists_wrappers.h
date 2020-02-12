@@ -30,11 +30,12 @@ t_dstruct_node  *t_dstruct_create_node(void *content, size_t content_size);
 size_t          list_counter(t_dstruct_list list, int (*filter)(void *));
 t_dstruct_node *list_find_node(t_dstruct_list list, int (*filter)(void *, void *), void *argument);
 t_dstruct_list	list_copy(t_dstruct_list list, int (*filter)(void *));
+int             list_node_index(t_dstruct_list list, t_dstruct_node *node);
 
 /*
 ** LIST_DELETE
 */
-
+int indx;
 void    list_delete(t_dstruct_list *list, void (*deconstructor)(void *));
 void    list_delete_node(t_dstruct_list *list, t_dstruct_node *node,
 		void (*node_deconstructor)(void *));
