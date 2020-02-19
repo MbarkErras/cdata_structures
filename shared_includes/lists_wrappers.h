@@ -40,4 +40,6 @@ void    list_delete(t_dstruct_list *list, void (*deconstructor)(void *));
 void    list_delete_node(t_dstruct_list *list, t_dstruct_node *node,
 		void (*node_deconstructor)(void *));
 
+void	list_sort(t_dstruct_list *list, int (* compare)(void *, void *));
+
 #endif
